@@ -1,10 +1,10 @@
 import React from 'react'
+import Router from './config/routerConfig/Router'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
-    <div>
-      React Core
-    </div>
+    <Router/>
   )
 }
 
