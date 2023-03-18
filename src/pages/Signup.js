@@ -1,6 +1,5 @@
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import {
-  Button,
   IconButton,
   InputAdornment,
   InputLabel,
@@ -13,6 +12,7 @@ import React, { useState } from "react";
 import FormControl from "@mui/material/FormControl";
 import { signUpUser } from "../config/Firebase/firebaseMethod";
 import { useNavigate } from "react-router-dom";
+import BAButton from "../config/components/BAButton";
 
 function Register() {
   // password show or hidden
@@ -26,17 +26,23 @@ function Register() {
   //form state
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loader, setLoader] = useState(false);
+
   //register user
   const registerUser = () => {
+    setLoader(true)
     const obj = {
       email: email,
       password: password,
     };
     signUpUser(obj)
       .then((res) => {
+        setLoader(false)
         console.log(res);
+        navigate('/')
       })
       .catch((err) => {
+        setLoader(false)
         console.log(err);
       });
   };
@@ -81,14 +87,9 @@ function Register() {
           label="Password"
         />
       </FormControl>
-      <Button
-        size="large"
-        className="mt-5"
-        variant="contained"
-        onClick={registerUser}
-      >
-        Register
-      </Button>
+      <Box className="mt-5 mb-5"> 
+      <BAButton loading={loader} label="register" size="large" onClick={registerUser} />
+      </Box>
       <Typography
         sx={{ cursor: "pointer" }}
         className="text-primary mt-2"

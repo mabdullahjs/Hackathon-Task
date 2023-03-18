@@ -1,6 +1,5 @@
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import {
-  Button,
   IconButton,
   InputAdornment,
   InputLabel,
@@ -13,6 +12,7 @@ import React, { useState } from "react";
 import FormControl from "@mui/material/FormControl";
 import { loginUser } from "../config/Firebase/firebaseMethod";
 import { useNavigate } from "react-router-dom";
+import BAButton from "../config/components/BAButton";
 
 function Login() {
   // password show or hidden
@@ -26,9 +26,12 @@ function Login() {
   //form state
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loader, setLoader] = useState(false);
+
 
   //login user function
   const loginUsers = () => {
+    setLoader(true)
     const obj = {
       email: email,
       password: password,
@@ -36,10 +39,12 @@ function Login() {
     loginUser(obj)
       .then((res) => {
         console.log(res);
+        navigate("/home");
       })
       .catch((err) => {
         console.log(err);
-      });
+        setLoader(false)
+      })
   };
 
   return (
@@ -79,14 +84,9 @@ function Login() {
           label="Password"
         />
       </FormControl>
-      <Button
-        size="large"
-        className="mt-5"
-        variant="contained"
-        onClick={loginUsers}
-      >
-        Login
-      </Button>
+      <Box className="mt-5 mb-5"> 
+      <BAButton loading={loader} label="login" size="large" onClick={loginUsers} />
+      </Box>
       <Typography
         sx={{ cursor: "pointer" }}
         className="text-primary mt-2"

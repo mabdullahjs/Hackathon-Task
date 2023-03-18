@@ -17,14 +17,14 @@ let signUpUser = (obj) => {
   return new Promise((resolve, reject) => {
     createUserWithEmailAndPassword(auth, obj.email, obj.password)
       .then(async (res) => {
-        obj.id = res.user.uid;
+        resolve(obj.id = res.user.uid)
         await addDoc(collection(db, "users"), obj)
-        .then((res)=>{
-          console.log("user added to database successfully");
-        })
-        .catch((err)=>{
-          console.log(err);
-        })
+          .then((res) => {
+            console.log("user added to database successfully");
+          })
+          .catch((err) => {
+            console.log(err);
+          })
       })
       .catch((err) => {
         reject(err.message);
@@ -36,13 +36,13 @@ let signUpUser = (obj) => {
 let loginUser = (obj) => {
   return new Promise((resolve, reject) => {
     signInWithEmailAndPassword(auth, obj.email, obj.password)
-    .then((res)=>{
-      console.log(res);
-    })
-    .catch((err)=>{
-      console.log(err);
-    })
+      .then((res) => {
+        resolve(res);
+      })
+      .catch((err) => {
+        reject(err);
+      })
   })
 };
 
-export { signUpUser , loginUser };
+export { signUpUser, loginUser };
