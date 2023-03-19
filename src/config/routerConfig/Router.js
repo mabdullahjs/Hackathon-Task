@@ -9,9 +9,9 @@ function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<ProtectedRoutes component={<Login/>} />} />
+        <Route path='/' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
-        <Route path='/home' element={<Home />} />
+        <Route path='/home' element={<ProtectedRoutes component={<Home/>} route="home"/>} />
         <Route path='*' element={<Login />} />
       </Routes>
     </BrowserRouter>

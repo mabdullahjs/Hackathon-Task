@@ -8,7 +8,7 @@ function Home() {
 
   const signout = ()=>{
     signOutUser()
-    .then((res)=>{
+    .then(()=>{
       navigate('/')
     })
     .catch((err)=>{
