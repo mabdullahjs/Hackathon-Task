@@ -2,6 +2,7 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
 } from "firebase/auth";
 import app from "./firebaseconfig";
 import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore";
@@ -48,4 +49,15 @@ let loginUser = (obj) => {
   })
 };
 
-export { signUpUser, loginUser };
+//signout User
+const signOutUser = ()=>{
+  return new Promise ((resolve , reject)=>{
+    signOut(auth).then(() => {
+      resolve("user Signout Successfully")
+    }).catch((error) => {
+      reject(error)
+    });
+  })
+}
+
+export { signUpUser, loginUser, auth , signOutUser };
