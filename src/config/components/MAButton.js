@@ -1,7 +1,7 @@
 import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
 
-function BAButton(props) {
+function MAButton(props) {
   const { label, onClick, loading, disabled, variant, color, size } = props;
   return (
     <>
@@ -17,4 +17,4 @@ function BAButton(props) {
     </>
   );
 }
-export default BAButton;
+export default MAButton;

@@ -1,24 +1,14 @@
-import { Visibility, VisibilityOff } from "@mui/icons-material";
 import {
-  IconButton,
-  InputAdornment,
-  InputLabel,
-  OutlinedInput,
-  TextField,
-  Typography,
+  Typography
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
-import FormControl from "@mui/material/FormControl";
 import { signUpUser } from "../config/Firebase/firebaseMethod";
 import { useNavigate } from "react-router-dom";
-import BAButton from "../config/components/BAButton";
+import MAButton from "../config/components/MAButton";
+import MAInput from "../config/components/MAInput";
 
 function Register() {
-  // password show or hidden
-  const [showPassword, setShowPassword] = React.useState(false);
-
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   //useNavigate
   const navigate = useNavigate();
@@ -58,37 +48,10 @@ function Register() {
       <Typography className="mb-4" variant="h4">
         Register User
       </Typography>
-      <TextField
-        className="mb-3"
-        id="outlined-basic"
-        label="Email"
-        type="email"
-        variant="outlined"
-        sx={{ width: "25rem" }}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <FormControl sx={{ width: "25rem" }} variant="outlined">
-        <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-        <OutlinedInput
-          id="outlined-adornment-password"
-          type={showPassword ? "text" : "password"}
-          onChange={(e) => setPassword(e.target.value)}
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={handleClickShowPassword}
-                edge="end"
-              >
-                {showPassword ? <VisibilityOff /> : <Visibility />}
-              </IconButton>
-            </InputAdornment>
-          }
-          label="Password"
-        />
-      </FormControl>
+      <MAInput className="mb-3" label="Email" type="email" variant="outlined" onChange={(e) => setEmail(e.target.value)} />
+      <MAInput className="mb-3" label="Password" type="password" variant="outlined" value={password} onChange={(e) => setPassword(e.target.value)} width="25rem"/>
       <Box className="mt-5 mb-5"> 
-      <BAButton loading={loader} label="register" size="large" onClick={registerUser} />
+      <MAButton loading={loader} label="register" size="large" onClick={registerUser} />
       </Box>
       <Typography
         sx={{ cursor: "pointer" }}
