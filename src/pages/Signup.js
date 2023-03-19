@@ -48,7 +48,7 @@ function Register() {
       <Typography className="mb-4" variant="h4">
         Register User
       </Typography>
-      <MAInput className="mb-3" label="Email" type="email" variant="outlined" onChange={(e) => setEmail(e.target.value)} />
+      <MAInput className="mb-3" label="Email" type="email" variant="outlined" onChange={(e) => setEmail(e.target.value)} width="25rem" value={email}/>
       <MAInput className="mb-3" label="Password" type="password" variant="outlined" value={password} onChange={(e) => setPassword(e.target.value)} width="25rem"/>
       <Box className="mt-5 mb-5"> 
       <MAButton loading={loader} label="register" size="large" onClick={registerUser} />

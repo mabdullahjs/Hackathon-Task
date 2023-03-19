@@ -18,7 +18,6 @@ function MAInput(props) {
     return (
         <TextField
             className={className}
-            id="outlined-basic"
             type={type}
             label={label}
             onChange={onChange}

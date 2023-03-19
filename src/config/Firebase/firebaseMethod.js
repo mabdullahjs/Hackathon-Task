@@ -4,7 +4,7 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import app from "./firebaseconfig";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore";
 
 
 const auth = getAuth(app);
@@ -36,8 +36,11 @@ let signUpUser = (obj) => {
 let loginUser = (obj) => {
   return new Promise((resolve, reject) => {
     signInWithEmailAndPassword(auth, obj.email, obj.password)
-      .then((res) => {
-        resolve(res);
+      .then(async () => {
+        const querySnapshot = await getDocs(collection(db, "users"));
+        querySnapshot.forEach((doc) => {
+          resolve(doc.data());
+        });
       })
       .catch((err) => {
         reject(err);
