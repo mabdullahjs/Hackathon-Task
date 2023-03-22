@@ -34,14 +34,14 @@ const Post = async (apiName, body) => {
 //Put Request
 
 let Put = async (apiName, body, id) => {
-    return await axios.put(`${baseApi}${apiName}/${id}`, body);
+    return await axios.put(`${baseurl}${apiName}/${id}`, body);
 };
 
 
 //Delete Request
 
 let Delete = async (apiName, id) => {
-    return await axios.delete(`${baseApi}${apiName}/${id}`);
+    return await axios.delete(`${baseurl}${apiName}/${id}`);
 };
 
 export {Get , Post , Put , Delete};
