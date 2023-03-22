@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Route, Routes, useNavigate } from 'react-router-dom'
 import MAModal from '../config/components/MAModal'
 import MAButton from '../config/components/MAButton'
 import { auth, sendData, signOutUser } from '../config/Firebase/firebaseMethod'
@@ -51,6 +51,12 @@ function Home() {
       <button onClick={() => setModel(true)}>Open Model</button>
       <MACheckbox label="open" />
       <MAButton onClick={dataSend} label="sendData" />
+
+      <Routes>
+        <Route path='/head' element={<h1>Head01</h1>} />
+        <Route path='/head1' element={<h1>Head02</h1>} />
+        <Route path='/head2' element={<h1>Head03</h1>} />
+      </Routes>
     </div>
   )
 }
