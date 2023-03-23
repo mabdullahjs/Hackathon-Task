@@ -5,7 +5,6 @@ import MAButton from '../config/components/MAButton'
 import { auth, sendData, signOutUser } from '../config/Firebase/firebaseMethod'
 import MACheckbox from '../config/components/MACheckbox'
 import MADatePicker from '../config/components/MADataPicker'
-import MASelect from '../config/components/MASelect'
 
 function Home() {
   //model state
@@ -13,7 +12,6 @@ function Home() {
 
   //date state
   const [date , setDate] = useState("");
-  const [age , setAge] = useState("");
 
   //close function 
   function close(val) {
@@ -30,7 +28,6 @@ function Home() {
     }, "datas")
       .then((res) => {
         console.log(res);
-        console.log(age);
         console.log(date);
       })
       .catch((err) => {
@@ -60,7 +57,7 @@ function Home() {
       <MACheckbox label="open" />
       <MAButton onClick={dataSend} label="sendData" /> <br />
       <MADatePicker onChange={(e)=>setDate(e)}/>
-      <MASelect option={[{option:"ten" , value:10} ,{option:"twenty" , value:20} , {option:"thirty" , value:30} ]} onChange={(e)=>setAge(e.target.value)} value={age}/>
+      {/* <MASelect option={[{option:"ten" , value:10} ,{option:"twenty" , value:20} , {option:"thirty" , value:30} ]} onChange={(e)=>setAge(e.target.value)} value={age}/> */}
 
       <Routes>
         <Route path='/head' element={<h1>Head01</h1>} />
