@@ -12,6 +12,9 @@ import {
   getDocs,
   query,
   where,
+  deleteDoc,
+  doc,
+  updateDoc,
 } from "firebase/firestore";
 
 const auth = getAuth(app);
@@ -88,17 +91,52 @@ const sendData = (obj, colName) => {
 //get data with id from firestore
 const getData = (colName) => {
   return new Promise(async (resolve, reject) => {
+    const dataArr = []
     const q = query(
       collection(db, colName),
       where("id", "==", auth.currentUser.uid)
     );
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
-      resolve(doc.data());
+      dataArr.push(doc.data())
+      resolve(dataArr);
     });
     reject("error occured");
   });
 };
 
+//get all data
+const getAllData = (colName) => {
+  return new Promise(async (resolve, reject) => {
+    const dataArr = []
+    const querySnapshot = await getDocs(collection(db, colName));
+    querySnapshot.forEach((doc) => {
+      const obj = { ...doc.data(), documentId: doc.id }
+      dataArr.push(obj)
+      resolve(dataArr);
+    });
+    reject("error occured")
+  })
+}
 
-export { signUpUser, loginUser, auth, signOutUser, sendData, getData };
+//Delete document by id
+const deleteDocument = async (id, name) => {
+  return new Promise((resolve, reject) => {
+    deleteDoc(doc(db, name, id));
+    resolve("document deleted")
+    reject("error occured")
+  })
+}
+
+//update document by id
+const updateDocument = async (obj, id, name) => {
+  return new Promise((resolve, reject) => {
+    const update = doc(db, name, id);
+    updateDoc(update, obj)
+    resolve("document updated")
+    reject("error occured")
+  })
+}
+
+
+export { auth, db, signUpUser, loginUser, signOutUser, sendData, getData, getAllData, deleteDocument, updateDocument };
