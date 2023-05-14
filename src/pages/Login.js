@@ -57,7 +57,7 @@ function Login() {
       <Typography
         sx={{ cursor: "pointer" }}
         className="text-primary mt-2"
-        onClick={() => navigate("/signup")}
+        onClick={() => navigate("/register")}
       >
         Not a user please register!
       </Typography>
