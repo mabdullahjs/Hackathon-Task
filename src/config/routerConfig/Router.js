@@ -1,9 +1,9 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Login from '../../pages/Login'
-// import ProtectedRoutes from './ProtectedRoutes'
+import ProtectedRoutes from './ProtectedRoutes'
 import Register from '../../pages/Signup'
-import Home from '../../pages/Home'
+import Home from '../../pages/UserApp/Home'
 
 
 function Router() {
@@ -12,7 +12,7 @@ function Router() {
       <Routes>
         <Route path='/' element={<Login />} />
         <Route path='/register' element={<Register />} />
-        <Route path='/home/*' element={<Home />} />
+        <Route path='/home/*' element={<ProtectedRoutes component={<Home/>}/>} />
         <Route path='*' element={<Login />} />
       </Routes>
     </BrowserRouter>
