@@ -51,12 +51,12 @@ function Home() {
   return (
     <div>
       <h1>Home</h1>
-      <button onClick={signout}>Signout</button>
+      {/* <button onClick={signout}>Signout</button>
       <MAModal open={model} modalTitle="checking model" close={close} />
       <button onClick={() => setModel(true)}>Open Model</button>
       <MACheckbox label="open" />
       <MAButton onClick={dataSend} label="sendData" /> <br />
-      <MADatePicker onChange={(e)=>setDate(e)}/>
+      <MADatePicker onChange={(e)=>setDate(e)}/> */}
       {/* <MASelect option={[{option:"ten" , value:10} ,{option:"twenty" , value:20} , {option:"thirty" , value:30} ]} onChange={(e)=>setAge(e.target.value)} value={age}/> */}
 
       <Routes>
