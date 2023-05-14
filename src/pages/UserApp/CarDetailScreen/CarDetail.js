@@ -13,7 +13,9 @@ function CarDetail() {
   const navigate = useNavigate()
   //bookNow function
   const bookNow = ()=>{
-    navigate('/home/booknow');
+    navigate('/home/booknow' , {
+      state:data
+    });
   }
   return (
     <Box className='mb-5'>
