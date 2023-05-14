@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 export default function MACards(props) {
-    const { image, title, detail } = props
+    const { image, title, detail , onClick , onClickTitle } = props
     return (
         <Card sx={{ maxWidth: 300 }}>
             <CardMedia
@@ -16,7 +16,7 @@ export default function MACards(props) {
                 title="green iguana"
             />
             <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
+                <Typography style={{cursor:'pointer'}} onClick={onClickTitle} gutterBottom variant="h5" component="div">
                     {title}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
@@ -24,7 +24,7 @@ export default function MACards(props) {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small">Book Now</Button>
+                <Button onClick={onClick} size="small">Book Now</Button>
             </CardActions>
         </Card>
     );
