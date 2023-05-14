@@ -2,13 +2,13 @@ import { initializeApp } from "firebase/app";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCeTw3T9a-nyKYdQEW-K7aeVoiXTF11Fpk",
-  authDomain: "institute-322.firebaseapp.com",
-  projectId: "institute-322",
-  storageBucket: "institute-322.appspot.com",
-  messagingSenderId: "136810697359",
-  appId: "1:136810697359:web:6789666d5bd188401116fa",
-  measurementId: "G-WG8BGT28V5"
+  apiKey: "AIzaSyCS7Rg7yvm__mi-iz_c1SdjW3kIUOuxyyw",
+  authDomain: "hackathon-321.firebaseapp.com",
+  projectId: "hackathon-321",
+  storageBucket: "hackathon-321.appspot.com",
+  messagingSenderId: "81612906266",
+  appId: "1:81612906266:web:f419c438b54c393b7e96a3",
+  measurementId: "G-9T9QCQ8NF1"
 };
 
 
